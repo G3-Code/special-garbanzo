@@ -5,11 +5,16 @@
     <title>Document</title>
   </head>
   <body>
-    This is a test message
+    <img src="" alt="Image of a cake" />
     <script>
-      fetch("../assets/cake1.jpg").then(response => {
-        console.log("yay!");
-      });
+      fetch("../assets/cake1.jpg")
+        .then(response => {
+          console.log("yay!");
+          return response.blob();
+        })
+        .then(blob => {
+          console.log(blob);
+        });
     </script>
   </body>
 </html>
