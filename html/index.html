@@ -5,7 +5,7 @@
     <title>Document</title>
   </head>
   <body>
-    <img src="" alt="Image of a cake" />
+    <img src="" alt="Image of a cake" id="cake" />
     <script>
       fetch("../assets/cake1.jpg")
         .then(response => {
@@ -14,6 +14,8 @@
         })
         .then(blob => {
           console.log(blob);
+          const imgTag = document.getElementById("cake");
+          imgTag.src = URL.createObjectURL(blob);
         });
     </script>
   </body>
