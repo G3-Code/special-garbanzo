@@ -8,16 +8,11 @@
   <body>
     <img src="" alt="Image of a cake" id="cake" />
     <script>
-      fetch("../assets/cake1.jpg")
-        .then(response => {
-          console.log("yay!");
-          return response.blob();
-        })
-        .then(blob => {
-          console.log(blob);
-          const imgTag = document.getElementById("cake");
-          imgTag.src = URL.createObjectURL(blob);
-        });
+      async function getCake() {
+        const response = await fetch("../assets/cake1.jpg");
+        const blob = await response.blob();
+        document.getElementById("cake").src = URL.createObjectURL(blob);
+      }
     </script>
   </body>
 </html>
