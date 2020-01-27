@@ -8,6 +8,7 @@
   <body>
     <img src="" alt="Image of a cake" id="cake" />
     <script>
+      getCake();
       async function getCake() {
         const response = await fetch("../assets/cake1.jpg");
         const blob = await response.blob();
