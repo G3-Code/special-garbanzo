@@ -10,9 +10,13 @@
     <script>
       getCake();
       async function getCake() {
-        const response = await fetch("../assets/cake1.jpg");
-        const blob = await response.blob();
-        document.getElementById("cake").src = URL.createObjectURL(blob);
+        try {
+          const response = await fetch("../assets/cake1.jpg");
+          const blob = await response.blob();
+          document.getElementById("cake").src = URL.createObjectURL(blob);
+        } catch (error) {
+          console.log(error);
+        }
       }
     </script>
   </body>
