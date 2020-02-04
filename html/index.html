@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="../styles/index.css" />
   </head>
   <body>
-    <img src="" alt="Image of a cake" id="cake" />
     <script>
       //Creating an array of file list
       let fileList = [
@@ -20,9 +19,12 @@
       getCake();
       async function getCake() {
         try {
-          const response = await fetch(`${FILEPATH}cake1.jpg`);
-          const blob = await response.blob();
-          document.getElementById("cake").src = URL.createObjectURL(blob);
+          for (let i = 0; i < fileList.length; i++) {
+            console.log(`${FILEPATH}${fileList[i]}`);
+          }
+          // const response = await fetch(`${FILEPATH}cake1.jpg`);
+          // const blob = await response.blob();
+          // document.getElementById("cake").src = URL.createObjectURL(blob);
         } catch (error) {
           console.log(error);
         }
