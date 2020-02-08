@@ -19,13 +19,17 @@
       getCake();
       async function getCake() {
         try {
-          let body = document.getElementsByTagName("body");
+          let body = document.getElementsByTagName("body")[0];
+          let imgNode = "";
+          let divNode = "";
           console.log(body);
           for (let i = 0; i < fileList.length; i++) {
             const response = await fetch(`${FILEPATH}${fileList[i]}`);
             const blob = await response.blob();
             if (blob.type === "image/jpeg") {
-              console.log("Its an image");
+              imgNode = document.createElement("img");
+              imgNode.src = URL.createObjectURL(blob);
+              body.appendChild(imgNode);
             } else if (blob.type === "text/plain") {
               console.log("Its a text");
             }
