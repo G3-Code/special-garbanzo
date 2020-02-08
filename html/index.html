@@ -19,10 +19,16 @@
       getCake();
       async function getCake() {
         try {
+          let body = document.getElementsByTagName("body");
+          console.log(body);
           for (let i = 0; i < fileList.length; i++) {
             const response = await fetch(`${FILEPATH}${fileList[i]}`);
             const blob = await response.blob();
-            console.log(blob.type);
+            if (blob.type === "image/jpeg") {
+              console.log("Its an image");
+            } else if (blob.type === "text/plain") {
+              console.log("Its a text");
+            }
           }
           // const response = await fetch(`${FILEPATH}cake1.jpg`);
           // const blob = await response.blob();
