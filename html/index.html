@@ -22,6 +22,7 @@
           let body = document.getElementsByTagName("body")[0];
           let imgNode = "";
           let divNode = "";
+          const reader = new FileReader();
           console.log(body);
           for (let i = 0; i < fileList.length; i++) {
             const response = await fetch(`${FILEPATH}${fileList[i]}`);
@@ -31,12 +32,10 @@
               imgNode.src = URL.createObjectURL(blob);
               body.appendChild(imgNode);
             } else if (blob.type === "text/plain") {
-              console.log("Its a text");
+              divNode = document.createElement("div");
+              // divNode.appendChild(blob);
             }
           }
-          // const response = await fetch(`${FILEPATH}cake1.jpg`);
-          // const blob = await response.blob();
-          // document.getElementById("cake").src = URL.createObjectURL(blob);
         } catch (error) {
           console.log(error);
         }
