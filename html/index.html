@@ -26,14 +26,19 @@
           console.log(body);
           for (let i = 0; i < fileList.length; i++) {
             const response = await fetch(`${FILEPATH}${fileList[i]}`);
-            const blob = await response.blob();
-            if (blob.type === "image/jpeg") {
+
+            let blob = "";
+            let text = "";
+            if (response.url.endsWith(".jpg")) {
+              blob = await response.blob();
               imgNode = document.createElement("img");
               imgNode.src = URL.createObjectURL(blob);
               body.appendChild(imgNode);
-            } else if (blob.type === "text/plain") {
+            } else if (response.url.endsWith(".txt")) {
+              text = await response.text();
               divNode = document.createElement("div");
-              // divNode.appendChild(blob);
+              divNode.innerHTML = text;
+              body.appendChild(divNode);
             }
           }
         } catch (error) {
