@@ -9,9 +9,14 @@
       getDataFromCSV();
       async function getDataFromCSV() {
         const response = await fetch("../assets/test.csv");
-        const data = (await response.text()).split(/\n/);
-        data.splice(0, 1);
-        console.log(data);
+        const table = (await response.text()).split(/\n/);
+        let rows = table.splice(1, table.length - 1);
+        console.log(rows);
+        rows.forEach(a => {
+          const row = a.split(",");
+          console.log(row[0]);
+          console.log(row[1]);
+        });
       }
     </script>
   </body>
