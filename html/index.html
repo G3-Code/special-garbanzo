@@ -14,8 +14,9 @@
         console.log(rows);
         rows.forEach(a => {
           const row = a.split(",");
-          console.log(row[0]);
-          console.log(row[1]);
+          const year = row[0];
+          const temp = row[1];
+          console.log(year, temp);
         });
       }
     </script>
