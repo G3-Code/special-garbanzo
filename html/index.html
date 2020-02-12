@@ -3,47 +3,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../styles/index.css" />
   </head>
   <body>
     <script>
-      //Creating an array of file list
-      let fileList = [
-        "cake1.jpg",
-        "cake2.jpg",
-        "cake3.jpg",
-        "cake4.jpg",
-        "poem.txt"
-      ];
-      const FILEPATH = "../assets/";
-      getCake();
-      async function getCake() {
-        try {
-          let body = document.getElementsByTagName("body")[0];
-          let imgNode = "";
-          let divNode = "";
-          const reader = new FileReader();
-          console.log(body);
-          for (let i = 0; i < fileList.length; i++) {
-            const response = await fetch(`${FILEPATH}${fileList[i]}`);
-
-            let blob = "";
-            let text = "";
-            if (response.url.endsWith(".jpg")) {
-              blob = await response.blob();
-              imgNode = document.createElement("img");
-              imgNode.src = URL.createObjectURL(blob);
-              body.appendChild(imgNode);
-            } else if (response.url.endsWith(".txt")) {
-              text = await response.text();
-              divNode = document.createElement("div");
-              divNode.innerHTML = text;
-              body.appendChild(divNode);
-            }
-          }
-        } catch (error) {
-          console.log(error);
-        }
+      getDataFromCSV();
+      async function getDataFromCSV() {
+        const response = await fetch("../assets/test.csv");
+        const data = (await response.text()).split(/\n/);
+        data.splice(0, 1);
+        console.log(data);
       }
     </script>
   </body>
